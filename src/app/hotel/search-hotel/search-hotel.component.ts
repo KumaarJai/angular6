@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HotelAPIService } from '../../service/hotel-api.service';
+import { HotelList } from '../../models/hotelList';
 
 @Component({
   selector: 'app-search-hotel',
@@ -8,21 +10,52 @@ import { Component, OnInit } from '@angular/core';
 export class SearchHotelComponent implements OnInit {
   locality: String;
   city: String;
-  CityDisabled = false;
-  LocalityDisabled = true;
-  searchFlag: String;
-  constructor() { }
+  CityEnabled = false;
+  LocalityEnabled = false;
+  displayFlag = false;
+  selectedCtiteria: String;
 
-  ngOnInit() {
+  hotels: HotelList;
+
+  constructor(private service: HotelAPIService) { }
+
+  ngOnInit() { }
+
+  onChange(value) {
+    console.log('Search Criteria : ' + value);
+    const criteria = value;
+    if (criteria === 'city') {
+      this.CityEnabled = true;
+      this.LocalityEnabled = false;
+    } else if (criteria === 'zip') {
+      this.LocalityEnabled = true;
+      this.CityEnabled = false;
+    }
   }
 
-  handleSearchCriteria() {
-    const criteria = this.searchFlag;
-    if (criteria === 'zip') {
-      this.CityDisabled = true;
+  SearchByCity() {
+    if ( this.city === null || this.city.length < 1) {
+      alert('Please Enter city');
+      this.displayFlag = false;
+      return false;
     } else {
-      this.LocalityDisabled = true;
+        this.service.getHotelDetailsByCity(this.city).subscribe(data => {
+          this.hotels = data;
+          this.displayFlag = true;
+        });
     }
+  }
 
+  SearchByLocality() {
+    if ( this.locality === null || this.locality.length < 1) {
+      alert('Please Enter locality');
+      this.displayFlag = false;
+      return false;
+    } else {
+        this.service.getHotelDetailsByLocality(this.locality).subscribe(data => {
+          this.hotels = data;
+          this.displayFlag = true;
+        });
+    }
   }
 }

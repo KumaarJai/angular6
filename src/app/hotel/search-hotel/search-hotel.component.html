@@ -7,18 +7,35 @@
     <div class="formHolder">
 
       <div class="col-sm-4 columns">
-        <label class="label" for="locality">Locality : </label>
-        <input class="form-control" type="text" name="locality"
-          id="locality" [(ngModel)]="locality" [disabled]="LocalityDisabled" >
-      </div>
-      <div class="col-sm-4 columns">
-        <label class="label" for="city"> City : </label>
-        <input class="form-control" type="text" name="city"
-          id="city" [(ngModel)]="locality" [disabled]="CityDisabled">
+        <label class="label" for="criteria">Search By : </label>
+        <select class="form-control" name="criteria" [(ngModel)]="selectedCtiteria" (ngModelChange)="onChange($event)">
+          <option value="zip"> Zip Code </option>
+          <option value="city"> City </option>
+        </select>
       </div>
 
-      <div class="col-sm-4 columns">
-        <button class="btn btn-success" name="SearchBtn"> Search </button>
+      <div class="col-sm-8 columns" *ngIf="LocalityEnabled">
+        <label class="label col-sm-4 text-right" for="locality">Locality : </label>
+        <input class="form-control col-sm-6" type="text" name="locality" maxlength="6" minlength="5" required placeholder="65065"
+          id="locality" [(ngModel)]="locality" >
+        <button class="btn btn-success form-control col-sm-2" name="SearchByLocality" (click)="SearchByLocality()"> Search </button>
       </div>
+
+      <div class="col-sm-8 columns" *ngIf="CityEnabled">
+        <label class="label col-sm-4 text-right" for="city"> City : </label>
+        <input class="form-control col-sm-6" type="text" name="city" minlength="2" required placeholder="Osage Beach"
+          id="city" [(ngModel)]="city">
+        <button class="btn btn-success form-control col-sm-2" name="SearchByCity" (click)="SearchByCity()"> Search </button>
+      </div>
+
+      <!-- <div class="col-sm-4 columns">
+        <button class="btn btn-success" name="SearchBtn"> Search </button>
+      </div> -->
     </div>
+
+
+    <div class="displayBox" *ngIf="displayFlag">
+        <app-display-hotels [Hotels]="hotels"> </app-display-hotels>
+    </div>
+
 </div>

@@ -39,6 +39,22 @@ export class HotelAPIService {
       );
   }
 
+  getHotelDetailsByCity(city: String): Observable<HotelList> {
+    console.log('API URL:' + this.API_URL + '?city=' + city);
+    return this.http.get<HotelList>(this.API_URL + '/hotelsByCity?city=' + city).pipe(
+      map(data => data),
+      catchError(this.handleError)
+      );
+  }
+
+  getHotelDetailsByLocality(zip: String): Observable<HotelList> {
+    console.log('API URL:' + this.API_URL + '?zip=' + zip);
+    return this.http.get<HotelList>(this.API_URL + '/hotelsByLocality?zip=' + zip).pipe(
+      map(data => data),
+      catchError(this.handleError)
+      );
+  }
+
   handleError (error: Response | any) {
     console.error('ApiService::handleError', error);
     return Observable.throw(error);
