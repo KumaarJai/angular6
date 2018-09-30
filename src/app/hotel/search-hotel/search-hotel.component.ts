@@ -34,7 +34,7 @@ export class SearchHotelComponent implements OnInit {
   }
 
   SearchByCity() {
-    if ( this.city === null || this.city.length < 1) {
+    if ( this.city === null || this.city === undefined) {
       alert('Please Enter city');
       this.displayFlag = false;
       return false;
@@ -47,7 +47,7 @@ export class SearchHotelComponent implements OnInit {
   }
 
   SearchByLocality() {
-    if ( this.locality === null || this.locality.length < 1) {
+    if ( this.locality === null || this.locality === undefined) {
       alert('Please Enter locality');
       this.displayFlag = false;
       return false;
