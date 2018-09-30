@@ -1,5 +1,7 @@
+
 .bg-dark-light {
   background: #343a40 !important;
+  padding-top: 50px;
 }
 .bg-theme, .bg-dark, .bg-dark-light, .bg-secondary {
   color: #ffffff;

@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row pageHeading">
+      <span class="title">> Search Hotel </span>
+    </div>
+    <div class="clearfix"> </div>
+
+    <div class="formHolder">
+
+      <div class="col-sm-4 columns">
+        <label class="label" for="locality">Locality : </label>
+        <input class="form-control" type="text" name="locality"
+          id="locality" [(ngModel)]="locality" [disabled]="LocalityDisabled" >
+      </div>
+      <div class="col-sm-4 columns">
+        <label class="label" for="city"> City : </label>
+        <input class="form-control" type="text" name="city"
+          id="city" [(ngModel)]="locality" [disabled]="CityDisabled">
+      </div>
+
+      <div class="col-sm-4 columns">
+        <button class="btn btn-success" name="SearchBtn"> Search </button>
+      </div>
+    </div>
+</div>

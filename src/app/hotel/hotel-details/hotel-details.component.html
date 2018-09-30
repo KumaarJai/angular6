@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row pageHeading">
+        <span class="title">> {{hotelName}} </span>
+      </div>
+      <div class="clearfix"> </div>
+
+      <div class="messageBox errorBox" *ngIf="hotelDetails.error != null">
+        <p>Error in handling your request: {{hotelDetails.error.message}}</p>
+      </div>
+
+      <div class="messageBox" *ngIf="hotelDetails.error == null && hotelDetails.hotel == null">
+          <p>Sorry, No Data found for {{hotelDetails.hotel.name}}...!</p>
+      </div>
+
+      <div class="messageBox" *ngIf="hotelDetails.error == null && hotelDetails.hotel != null">
+        <div class="col-sm-12 cols">
+            <img [src]="'assets/images/hotel2.jpg'" class="img-responsive rounded" alt="Chania" style="width:100%; height: auto">
+        </div>
+        <div class="clearfix"> </div>
+        <div class="col-sm-12 cols">
+            <table class="detailsTable table table-striped">
+              <thead>
+                <th style="width: 30%"> </th>
+                <th style="width: 70%"> </th>
+              </thead>
+              <tbody>
+                  <tr> <td class="title">Name </td>         <td class="data">{{hotelDetails.hotel.name}}</td></tr>
+                  <tr> <td class="title">Address </td>      <td class="data">{{hotelDetails.hotel.address}}</td></tr>
+                  <tr> <td class="title">City </td>         <td class="data">{{hotelDetails.hotel.city}}</td></tr>
+                  <tr> <td class="title">Country </td>      <td class="data">{{hotelDetails.hotel.country}}</td></tr>
+                  <tr> <td class="title">Postal Code </td>  <td class="data">{{hotelDetails.hotel.postalCode}}</td></tr>
+                  <tr> <td class="title">Province </td>     <td class="data">{{hotelDetails.hotel.province}}</td></tr>
+                  <tr> <td class="title">Categories </td>   <td class="data">{{hotelDetails.hotel.categories}}</td></tr>
+                  <tr> <td class="title">Location </td>     <td class="data">{{hotelDetails.hotel.latitude}} , {{hotelDetails.hotel.longitude}}</td></tr>
+                  <tr> <td class="title">Rating  </td>      <td class="data">{{hotelDetails.hotel.reviewsRating}}</td></tr>
+                  <tr> <td class="title">Reviewer Name </td> <td class="data">{{hotelDetails.hotel.reviewsUsername}}</td></tr>
+                  <tr> <td class="title">Review Title </td> <td class="data">{{hotelDetails.hotel.reviewsTitle}}</td></tr>
+                  <tr> <td class="title">Review </td>       <td class="data">{{hotelDetails.hotel.reviewsText}}</td></tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+
+</div>

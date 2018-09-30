@@ -1,3 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 @import "../node_modules/font-awesome/css/font-awesome.css";
+
+.pagination{
+  display: inline-flex;
+}
+img.rounded{
+  border-radius: 10px !important;
+}
+.messageBox{
+  padding: 50px;
+  text-align: center;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin:10px;
+  /* display: flex; */
+}
+
+.errorBox{
+  background-color: lightcoral;
+}
+
+.pageHeading{
+  margin-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.tableHolder {
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  margin-bottom: 50px;
+}
+table.detailsTable{
+  text-align: left;
+}
+table.detailsTable tr td{
+  padding:0.35rem
+}
+table.detailsTable tr td.title{
+  font-weight: bold;
+}
+
+.label{
+  padding-top: 15px;
+}
+.form-control{
+  display: inline;
+  width: 60%;
+  margin:10px;
+}
+
+.columns{
+  display: inline-flex;
+}
